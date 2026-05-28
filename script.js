@@ -51,6 +51,7 @@ const progressBar = document.getElementById("progress");
 const answersContainer = document.getElementById("answer-options");
 const answerOptions = document.getElementById("answer-options");
 const questionElement = document.getElementById("question");
+const questionNumber = document.getElementById("question-number");
 const finalScore = document.getElementById("final-score");
 const quizScreen = document.getElementById("quiz");
 const nextButton = document.getElementById("next-btn");
@@ -83,12 +84,15 @@ function startTopicQuiz(topic) {
   homeScreen.classList.add("hidden");
   quizScreen.classList.remove("hidden");
 
-  displayQuestion();
+  displayQuestion(topic);
 }
 
 //FUNCTION TO DISPLAY THE QUIZ SCREEN
-function displayQuestion() {
+function displayQuestion(topic) {
   const currentQuestion = currentQuiz.getCurrentQuestion();
+
+  //display topic header.
+  quizTopic.textContent = topic;
 
   //displaying only the question
   questionElement.textContent = currentQuestion.question;
@@ -109,6 +113,29 @@ function displayQuestion() {
 
     answersContainer.appendChild(button);
   });
+
+  //update progress bar.
+  updateProgressBar();
+
+  //update question number
+  updateQuestionNumber();
+}
+
+//PROGRESS FUNCTIONS
+function updateQuestionNumber() {
+  const current = currentQuiz.currentQuestionIndex + 1;
+  const total = currentQuiz.questions.length;
+
+  questionNumber.textContent = `Question ${current} of ${total}`;
+}
+
+function updateProgressBar() {
+  const current = currentQuiz.currentQuestionIndex;
+  const totalQuestions = currentQuiz.questions.length;
+
+  const progressPercentage = (current / totalQuestions) * 100;
+
+  progressBar.style.width = `${progressPercentage}%`;
 }
 
 //handle selected answer. handle right or wrong answer display
