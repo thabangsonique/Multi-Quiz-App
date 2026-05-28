@@ -32,6 +32,14 @@ class Quiz {
 
     return isCorrect;
   }
+
+  nextQuestion() {
+    this.currentQuestionIndex++;
+  }
+
+  isFinished() {
+    return this.currentQuestionIndex >= this.questions.length;
+  }
 }
 
 //ASSIGNING DOM ELEMENTS.
@@ -46,6 +54,8 @@ const questionElement = document.getElementById("question");
 const finalScore = document.getElementById("final-score");
 const quizScreen = document.getElementById("quiz");
 const nextButton = document.getElementById("next-btn");
+const resultsScreen = document.getElementById("results-screen");
+const restartQuiz = document.getElementById("restart-quiz");
 
 //CREATING TOPICS BUTTON
 Object.keys(quizzes).forEach((topic) => {
@@ -111,6 +121,48 @@ function handleOption(button, selectedOption) {
   } else {
     button.classList.add("incorrect");
   }
+
+  //disable all buttons after the user clicks an option.
+  const allButtons = answersContainer.querySelectorAll("button");
+
+  allButtons.forEach((buttonElement) => {
+    buttonElement.disabled = true;
+  });
 }
 
 //next question button.
+nextButton.addEventListener("click", () => {
+  //next question function to grab current index.
+  currentQuiz.nextQuestion();
+
+  if (currentQuiz.isFinished()) {
+    showResults();
+  } else {
+    displayQuestion();
+  }
+});
+
+function showResults() {
+  //hide quiz screen
+  quizScreen.classList.add("hidden");
+  //show results screen.
+  resultsScreen.classList.remove("hidden");
+
+  //calculate percentage.
+  const percentage = (currentQuiz.score / currentQuiz.questions.length) * 100;
+
+  //display percentage.
+  if (percentage === 100) {
+    finalScore.textContent = "Outstanding!, you got 10 out of 10!";
+  } else if (percentage > 50 && percentage < 100) {
+    finalScore.textContent = `Well done! you got ${percentage} %`;
+  } else {
+    finalScore.textContent = `you got ${percentage}%, Hard luck. Try again!`;
+  }
+}
+
+//RESTART THE QUIZ.
+restartQuiz.addEventListener("click", () => {
+  resultsScreen.classList.add("hidden");
+  homeScreen.classList.remove("hidden");
+});

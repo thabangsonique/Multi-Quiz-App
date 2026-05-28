@@ -27,6 +27,7 @@ button {
   justify-content: center;
   align-items: center;
   padding-top: 70px;
+  padding-bottom: 50px;
 }
 
 #home-screen,
@@ -102,6 +103,22 @@ button {
 
 .incorrect {
   background-color: rgb(213, 128, 128);
+}
+
+#next-btn {
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+#next-btn:hover {
+  transform: scale(110%);
+  background-color: rgba(141, 141, 141, 0.2);
 }
 
 #topics-container p {
