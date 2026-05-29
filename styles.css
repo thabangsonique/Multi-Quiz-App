@@ -216,7 +216,7 @@ p {
   }
 
   .screens {
-    max-width: 240px;
+    max-width: 300px;
   }
 
   .heading-container h2 {
@@ -236,6 +236,10 @@ p {
   #topics-container {
     padding-top: 30px;
     padding-bottom: 20px;
+  }
+
+  #score {
+    font-size: 20px;
   }
 }
 
