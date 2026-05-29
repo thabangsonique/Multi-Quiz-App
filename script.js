@@ -84,15 +84,16 @@ function startTopicQuiz(topic) {
   homeScreen.classList.add("hidden");
   quizScreen.classList.remove("hidden");
 
-  displayQuestion(topic);
+  displayQuestion();
 }
 
 //FUNCTION TO DISPLAY THE QUIZ SCREEN
-function displayQuestion(topic) {
+function displayQuestion() {
   const currentQuestion = currentQuiz.getCurrentQuestion();
 
   //display topic header.
-  quizTopic.textContent = topic;
+  quizTopic.textContent = currentQuiz.topic;
+  updateScore();
 
   //displaying only the question
   questionElement.textContent = currentQuestion.question;
@@ -138,9 +139,20 @@ function updateProgressBar() {
   progressBar.style.width = `${progressPercentage}%`;
 }
 
+//SCORE TRACKING.
+function updateScore() {
+  const newScore = currentQuiz.score;
+  const totalQuestions = currentQuiz.questions.length;
+
+  scoreElement.textContent = `Current Score: ${newScore} out of ${totalQuestions}`;
+}
+
 //handle selected answer. handle right or wrong answer display
 function handleOption(button, selectedOption) {
   const isCorrect = currentQuiz.checkAnswer(selectedOption);
+
+  //score update.
+  updateScore();
 
   //add styling to button based on answer
   if (isCorrect) {
@@ -195,6 +207,11 @@ function showResults() {
 restartQuiz.addEventListener("click", () => {
   resultsScreen.classList.add("hidden");
   homeScreen.classList.remove("hidden");
+
+  //reset score
+  let score = 0;
+
+  scoreElement.textContent = `Current Score: ${score} out of 10`;
 });
 
 //SAVE USERDATA WHEN REFRESHING PAGE.

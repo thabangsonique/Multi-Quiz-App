@@ -3,8 +3,8 @@ const quizzes = {
   Science: [
     {
       question: "What is the chemical symbol for water? ",
-      options: ["H20", "CO2", "NaCl", "O2"],
-      correctAnswer: "H20",
+      options: ["H2O", "CO2", "NaCl", "O2"],
+      correctAnswer: "H2O",
     },
     {
       question: "What planet is known as the red planet? ",
@@ -13,12 +13,12 @@ const quizzes = {
     },
     {
       question: "How many bones are in the adult human body?",
-      options: ["206 ", "180 ", "220", "250"],
+      options: ["206", "180", "220", "250"],
       correctAnswer: "206",
     },
     {
       question: "What gas do plants absorb from the atmosphere? ",
-      options: ["Oxygen", "Nitrogen", "Carbon", "Dioxide", "Hydrogen"],
+      options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
       correctAnswer: "Carbon Dioxide",
     },
     {
@@ -61,8 +61,8 @@ const quizzes = {
   Sports: [
     {
       question: "What is the chemical symbol for water? ",
-      options: ["H20", "CO2", "NaCl", "O2"],
-      correctAnswer: "H20",
+      options: ["H2O", "CO2", "NaCl", "O2"],
+      correctAnswer: "H2O",
     },
     {
       question: "What planet is known as the red planet? ",
@@ -71,12 +71,12 @@ const quizzes = {
     },
     {
       question: "How many bones are in the adult human body?",
-      options: ["206 ", "180 ", "220", "250"],
+      options: ["206", "180", "220", "250"],
       correctAnswer: "206",
     },
     {
       question: "What gas do plants absorb from the atmosphere? ",
-      options: ["Oxygen", "Nitrogen", "Carbon", "Dioxide", "Hydrogen"],
+      options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
       correctAnswer: "Carbon Dioxide",
     },
     {
@@ -119,8 +119,8 @@ const quizzes = {
   Math: [
     {
       question: "What is the chemical symbol for water? ",
-      options: ["H20", "CO2", "NaCl", "O2"],
-      correctAnswer: "H20",
+      options: ["H2O", "CO2", "NaCl", "O2"],
+      correctAnswer: "H2O",
     },
     {
       question: "What planet is known as the red planet? ",
@@ -129,12 +129,12 @@ const quizzes = {
     },
     {
       question: "How many bones are in the adult human body?",
-      options: ["206 ", "180 ", "220", "250"],
+      options: ["206", "180", "220", "250"],
       correctAnswer: "206",
     },
     {
       question: "What gas do plants absorb from the atmosphere? ",
-      options: ["Oxygen", "Nitrogen", "Carbon", "Dioxide", "Hydrogen"],
+      options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
       correctAnswer: "Carbon Dioxide",
     },
     {
@@ -177,8 +177,8 @@ const quizzes = {
   Geography: [
     {
       question: "What is the chemical symbol for water? ",
-      options: ["H20", "CO2", "NaCl", "O2"],
-      correctAnswer: "H20",
+      options: ["H2O", "CO2", "NaCl", "O2"],
+      correctAnswer: "H2O",
     },
     {
       question: "What planet is known as the red planet? ",
@@ -187,12 +187,12 @@ const quizzes = {
     },
     {
       question: "How many bones are in the adult human body?",
-      options: ["206 ", "180 ", "220", "250"],
+      options: ["206", "180", "220", "250"],
       correctAnswer: "206",
     },
     {
       question: "What gas do plants absorb from the atmosphere? ",
-      options: ["Oxygen", "Nitrogen", "Carbon", "Dioxide", "Hydrogen"],
+      options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
       correctAnswer: "Carbon Dioxide",
     },
     {
