@@ -16,46 +16,48 @@
     <main class="app-container">
       <h1>Multi-Topic Quiz</h1>
       <!-- HOME SCREEN -(topics) -->
-      <section id="home-screen">
-        <div class="heading-container">
-          <h2>Quiz Topics</h2>
-          <p>Select a topic to begin.</p>
-        </div>
+      <div class="screens">
+        <section id="home-screen">
+          <div class="heading-container">
+            <h2>Quiz Topics</h2>
+            <p>Select a topic to begin.</p>
+          </div>
 
-        <!-- render the topics with DOM -->
-        <div id="topics-container"></div>
-      </section>
+          <!-- render the topics with DOM -->
+          <div id="topics-container"></div>
+        </section>
 
-      <!-- QUIZ SCREEN -->
-      <section id="quiz" class="hidden">
-        <div class="quiz-heading">
-          <h2 id="quiz-topic"></h2>
-          <h3 id="question-number"></h3>
+        <!-- QUIZ SCREEN -->
+        <section id="quiz" class="hidden">
+          <div class="quiz-heading">
+            <h2 id="quiz-topic"></h2>
+            <h3 id="question-number"></h3>
 
-          <!--quiz progress bar -->
-          <div class="progress-bar"><div id="progress"></div></div>
-        </div>
+            <!--quiz progress bar -->
+            <div class="progress-bar"><div id="progress"></div></div>
+          </div>
 
-        <!-- answer options -->
-        <div class="answers-container">
-          <h2 id="question"></h2>
-          <div id="answer-options"></div>
-        </div>
+          <!-- answer options -->
+          <div class="answers-container">
+            <h2 id="question"></h2>
+            <div id="answer-options"></div>
+          </div>
 
-        <!-- next button -->
-        <button id="next-btn">Next Question</button>
-      </section>
+          <!-- next button -->
+          <button id="next-btn">Next Question</button>
+        </section>
 
-      <!-- RESULTS SCREEN -->
-      <section id="results-screen" class="hidden">
-        <h2>Quiz Complete!</h2>
-        <!-- final score display -->
-        <p id="final-score"></p>
+        <!-- RESULTS SCREEN -->
+        <section id="results-screen" class="hidden">
+          <h2>Quiz Complete!</h2>
+          <!-- final score display -->
+          <p id="final-score"></p>
 
-        <div id="results-summary"></div>
+          <div id="results-summary"></div>
 
-        <button id="restart-quiz">Choose Another Topic</button>
-      </section>
+          <button id="restart-quiz">Choose Another Topic</button>
+        </section>
+      </div>
     </main>
 
     <script src="data.js"></script>
