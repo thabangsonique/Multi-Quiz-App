@@ -157,10 +157,13 @@ function handleOption(button, selectedOption) {
   });
 }
 
-//next question button.
+//NEXT QUESTION BUTTON.
 nextButton.addEventListener("click", () => {
   //next question function to grab current index.
   currentQuiz.nextQuestion();
+
+  //save updated user data.
+  saveQuizState();
 
   if (currentQuiz.isFinished()) {
     showResults();
@@ -184,7 +187,7 @@ function showResults() {
   } else if (percentage > 50 && percentage < 100) {
     finalScore.textContent = `Well done! you got ${percentage} %`;
   } else {
-    finalScore.textContent = `you got ${percentage}%, Hard luck. Try again!`;
+    finalScore.textContent = `You got ${percentage}%, Hard luck. Try again!`;
   }
 }
 
@@ -192,4 +195,47 @@ function showResults() {
 restartQuiz.addEventListener("click", () => {
   resultsScreen.classList.add("hidden");
   homeScreen.classList.remove("hidden");
+});
+
+//SAVE USERDATA WHEN REFRESHING PAGE.
+function saveQuizState() {
+  if (!currentQuiz) return;
+
+  const quizState = {
+    topic: currentQuiz.topic,
+    currentQuestionIndex: currentQuiz.currentQuestionIndex,
+    score: currentQuiz.score,
+    userAnswers: currentQuiz.userAnswers,
+  };
+
+  //store inside local storage.
+  localStorage.setItem("quizState", JSON.stringify(quizState));
+}
+
+// LOAD DATA WHEN USER REFRESHES.
+function loadQuizState() {
+  const savedState = localStorage.getItem("quizState");
+
+  if (!savedState) return false;
+
+  const objectState = JSON.parse(savedState); //convert save state string into javascript object
+
+  //re-generate the instance using updated "quizState" data.
+  currentQuiz = new Quiz(objectState.topic, quizzes[objectState.topic]);
+
+  //assign updated index,score, and user answer.
+  currentQuiz.currentQuestionIndex = objectState.currentQuestionIndex;
+  currentQuiz.score = objectState.score;
+  currentQuiz.userAnswers = objectState.userAnswers;
+
+  return true;
+}
+
+//ADD eventlistener REFRESH FUNCTION WHEN LOADING. trigga the actual load function.
+window.addEventListener("load", () => {
+  if (loadQuizState()) {
+    homeScreen.classList.add("hidden");
+    quizScreen.classList.remove("hidden");
+    displayQuestion(); //uses updated data when running displayQuestion function.
+  }
 });
