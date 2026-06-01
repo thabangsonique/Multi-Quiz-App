@@ -1,4 +1,20 @@
 //create the quize class
+//ASSIGNING DOM ELEMENTS.
+const homeScreen = document.getElementById("home-screen");
+const topicsContainer = document.getElementById("topics-container");
+const quizTopic = document.getElementById("quiz-topic");
+const scoreElement = document.getElementById("score");
+const progressBar = document.getElementById("progress");
+const answersContainer = document.getElementById("answer-options");
+const answerOptions = document.getElementById("answer-options");
+const questionElement = document.getElementById("question");
+const questionNumber = document.getElementById("question-number");
+const finalScore = document.getElementById("final-score");
+const quizScreen = document.getElementById("quiz");
+const nextButton = document.getElementById("next-btn");
+const resultsScreen = document.getElementById("results-screen");
+const restartQuiz = document.getElementById("restart-quiz");
+
 class Quiz {
   constructor(topic, questions) {
     this.topic = topic;
@@ -37,26 +53,11 @@ class Quiz {
     this.currentQuestionIndex++;
   }
 
+  //checks if end of questions was reached.
   isFinished() {
     return this.currentQuestionIndex >= this.questions.length;
   }
 }
-
-//ASSIGNING DOM ELEMENTS.
-const homeScreen = document.getElementById("home-screen");
-const topicsContainer = document.getElementById("topics-container");
-const quizTopic = document.getElementById("quiz-topic");
-const scoreElement = document.getElementById("score");
-const progressBar = document.getElementById("progress");
-const answersContainer = document.getElementById("answer-options");
-const answerOptions = document.getElementById("answer-options");
-const questionElement = document.getElementById("question");
-const questionNumber = document.getElementById("question-number");
-const finalScore = document.getElementById("final-score");
-const quizScreen = document.getElementById("quiz");
-const nextButton = document.getElementById("next-btn");
-const resultsScreen = document.getElementById("results-screen");
-const restartQuiz = document.getElementById("restart-quiz");
 
 //CREATING TOPICS BUTTON
 Object.keys(quizzes).forEach((topic) => {
@@ -84,15 +85,21 @@ function startTopicQuiz(topic) {
   homeScreen.classList.add("hidden");
   quizScreen.classList.remove("hidden");
 
-  displayQuestion();
+  displayQuestion(topic);
 }
 
 //FUNCTION TO DISPLAY THE QUIZ SCREEN
-function displayQuestion() {
+function displayQuestion(topic) {
   const currentQuestion = currentQuiz.getCurrentQuestion();
 
+  //safety check.
+  if (!currentQuestion) {
+    showResults();
+    return;
+  }
+
   //display topic header.
-  quizTopic.textContent = currentQuiz.topic;
+  quizTopic.textContent = currentQuestion.topic; //display chosen topic
   updateScore();
 
   //displaying only the question
